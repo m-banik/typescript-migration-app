@@ -11,3 +11,8 @@ export const selectMovieById = (movieId) =>
   createSelector([selectMoviesList], (moviesList) =>
     moviesList.find(({ id }) => id === movieId)
   );
+
+export const selectMoviesIds = createSelector(
+  [selectMoviesList],
+  (moviesList) => moviesList.map(({ id }) => id)
+);
