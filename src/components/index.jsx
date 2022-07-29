@@ -5,4 +5,6 @@ export * from './element-index';
 export * from './movie';
 export * from './movie-button-panel';
 export * from './movies-list';
+export * from './movies-list-control-buttons-panel';
+export * from './movies-list-control-panel';
 export * from './movies-list-element';
