@@ -14,7 +14,10 @@
     "type": "git",
     "url": "git+https://github.com/m-banik/typescript-migration-app.git"
   },
-  "keywords": ["React", "TypeScript"],
+  "keywords": [
+    "React",
+    "TypeScript"
+  ],
   "author": "Marcin Banik",
   "license": "MIT",
   "bugs": {
@@ -27,6 +30,7 @@
     "node": "^18.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.34.0",
     "react-redux": "^8.0.2",
     "redux": "^4.2.0",
     "redux-saga": "^1.1.3",

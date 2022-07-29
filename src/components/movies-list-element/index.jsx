@@ -1,7 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { EditableMovie, Movie, MovieButtonPanel } from '..';
-import { selectMovieById, deleteMovieStart } from '../../models';
+import {
+  selectMovieById,
+  editMovieStart,
+  deleteMovieStart
+} from '../../models';
 import classes from './styles.module.less';
 
 export const MoviesListElement = ({ movieId, elementIndex }) => {
@@ -9,11 +13,6 @@ export const MoviesListElement = ({ movieId, elementIndex }) => {
   const dispatch = useDispatch();
 
   const [isMovieEdited, setIsMovieEdited] = React.useState(false);
-
-  const handleDeleteMovie = React.useCallback(
-    () => dispatch(deleteMovieStart(movieId)),
-    [movieId, dispatch]
-  );
 
   const handleSetMovieEditionMode = React.useCallback(
     () => setIsMovieEdited(true),
@@ -25,20 +24,35 @@ export const MoviesListElement = ({ movieId, elementIndex }) => {
     [setIsMovieEdited]
   );
 
+  const handleEditMovie = React.useCallback(
+    (editedMovieData) => {
+      const editedMovieProperties = { id: movieId, ...editedMovieData };
+      dispatch(editMovieStart(editedMovieProperties));
+      handleUnsetMovieEditionMode();
+    },
+    [movieId, dispatch, handleUnsetMovieEditionMode]
+  );
+
+  const handleDeleteMovie = React.useCallback(
+    () => dispatch(deleteMovieStart(movieId)),
+    [movieId, dispatch]
+  );
+
   return (
     <li className={classes.moviesListElement}>
       {isMovieEdited ? (
         <EditableMovie
           elementIndex={elementIndex}
           title={movie.title}
-          premiereDate={movie.premiere_date}
+          premiereDate={movie.premiereDate}
           director={movie.director}
+          onEditMovie={handleEditMovie}
         />
       ) : (
         <Movie
           elementIndex={elementIndex}
           title={movie.title}
-          premiereDate={movie.premiere_date}
+          premiereDate={movie.premiereDate}
           director={movie.director}
         />
       )}

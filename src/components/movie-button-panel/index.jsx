@@ -20,11 +20,6 @@ export const MovieButtonPanel = ({
         <Button description={'Edit'} onClick={onSetMovieEditionMode} />
       )}
       <Button
-        description={'Accept'}
-        isDisabled={!isMovieEdited}
-        onClick={() => console.log('Hello')}
-      />
-      <Button
         description={'Delete'}
         variant={'danger'}
         onClick={onDeleteMovie}
