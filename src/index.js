@@ -9,8 +9,10 @@ const rootNode = document.getElementById('root');
 if (rootNode) {
   const root = createRoot(rootNode);
   root.render(
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>
   );
 }
