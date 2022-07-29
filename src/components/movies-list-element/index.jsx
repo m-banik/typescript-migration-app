@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { EditableMovie, Movie, MovieButtonPanel } from '..';
 import {
@@ -64,4 +65,9 @@ export const MoviesListElement = ({ movieId, elementIndex }) => {
       />
     </li>
   );
+};
+
+MoviesListElement.propTypes = {
+  movieId: PropTypes.string.isRequired,
+  elementIndex: PropTypes.number
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { ElementIndex, Button } from '..';
 import classes from './styles.module.less';
@@ -78,4 +79,12 @@ export const EditableMovie = ({
       </div>
     </div>
   );
+};
+
+EditableMovie.propTypes = {
+  elementIndex: PropTypes.number,
+  title: PropTypes.string,
+  premiereDate: PropTypes.number,
+  director: PropTypes.string,
+  onEditMovie: PropTypes.func.isRequired
 };
