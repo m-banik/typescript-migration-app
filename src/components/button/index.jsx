@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CN from 'classnames';
 import classes from './styles.module.less';
 
 export const Button = ({
@@ -9,11 +10,10 @@ export const Button = ({
   isDisabled,
   onClick
 }) => {
-  const classNames = [
-    classes.button,
-    variant ? classes[variant] : '',
-    className ? className : ''
-  ].join(' ');
+  const classNames = CN(classes.button, {
+    [classes[variant]]: !!variant,
+    [className]: !!className
+  });
 
   return (
     <button className={classNames} disabled={isDisabled} onClick={onClick}>
