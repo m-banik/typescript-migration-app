@@ -13,16 +13,18 @@ export const EditableMovie = ({
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm();
 
   const onSubmit = React.useMemo(() => {
     const handleFormData = (data, event) => {
       onEditMovie(data);
+      reset();
     };
 
     return handleSubmit(handleFormData);
-  }, [onEditMovie, handleSubmit]);
+  }, [onEditMovie, reset, handleSubmit]);
 
   return (
     <div className={classes.editableMovie}>
@@ -33,12 +35,14 @@ export const EditableMovie = ({
         <input
           defaultValue={title}
           type="text"
+          placeholder="Title"
           className={classes.title}
           {...register('title', { required: true })}
         />
         <input
           defaultValue={premiereDate}
           type="number"
+          placeholder="Premiere date"
           className={classes.premiere}
           {...register('premiereDate', {
             required: true,
@@ -49,6 +53,7 @@ export const EditableMovie = ({
         <input
           defaultValue={director}
           type="text"
+          placeholder="Director"
           className={classes.director}
           {...register('director', { required: true })}
         />
