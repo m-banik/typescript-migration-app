@@ -1,16 +1,24 @@
-import * as moviesActionTypes from './types';
-import { moviesSamplesList } from '../../common';
 import { produce } from 'immer';
+import { MoviesModelActionType } from '.';
+import * as moviesActionTypes from './types';
+import {
+  MoviesModelStateType,
+  moviesSamplesList,
+  ReducerType
+} from '@Common/index';
 
-const clearMoviesModelState = {
+const clearMoviesModelState: MoviesModelStateType = {
   movies: []
 };
 
-const initialMoviesModelState = {
+const initialMoviesModelState: MoviesModelStateType = {
   movies: moviesSamplesList
 };
 
-export const moviesModelReducer = (state = initialMoviesModelState, action) =>
+export const moviesModelReducer: ReducerType<
+  MoviesModelStateType,
+  MoviesModelActionType
+> = (state = initialMoviesModelState, action) =>
   produce(state, (draft) => {
     switch (action.type) {
       case moviesActionTypes.STORE_MOVIES:
