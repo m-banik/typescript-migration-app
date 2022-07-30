@@ -10,12 +10,12 @@ import {
 
 type ActionType = ReturnType<typeof addMovieStart>;
 
-export function* onAddMovie({ newMovie }: ActionType) {
-  const completedNewMovie = { ...newMovie, id: nanoid() };
+export function* onAddMovie({ newMovieData }: ActionType) {
+  const newMovie = { ...newMovieData, id: nanoid() };
 
   const newMoviesList = produce(yield* select(selectMoviesList), (draft) => [
     ...draft,
-    completedNewMovie
+    newMovie
   ]);
 
   yield* put(storeMovies(newMoviesList));

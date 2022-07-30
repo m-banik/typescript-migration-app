@@ -1,29 +1,41 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { EditableMovie, MoviesListControlButtonsPanel } from '..';
+import { DispatchType, MovieDataHandlerType } from '@Common/index';
 import {
   addMovieStart,
   clearMoviesModelState,
   resetMoviesModelState
-} from '../../models';
+} from '@Models/index';
+import {
+  EditableMovie,
+  MoviesListControlButtonsPanel
+} from '@Components/index';
 import classes from './styles.module.less';
 
-export const MoviesListControlPanel = () => {
-  const dispatch = useDispatch();
+type CustomDispatchType = DispatchType<
+  ReturnType<
+    | typeof addMovieStart
+    | typeof clearMoviesModelState
+    | typeof resetMoviesModelState
+  >
+>;
 
-  const handleAddMovie = React.useCallback(
+export const MoviesListControlPanel = () => {
+  const dispatch = useDispatch<CustomDispatchType>();
+
+  const handleAddMovie = React.useCallback<MovieDataHandlerType>(
     (addedMovieData) => {
       dispatch(addMovieStart(addedMovieData));
     },
     [dispatch]
   );
 
-  const handleClearMoviesList = React.useCallback(
+  const handleClearMoviesList = React.useCallback<VoidFunction>(
     () => dispatch(clearMoviesModelState()),
     [dispatch]
   );
 
-  const handleResetMoviesList = React.useCallback(
+  const handleResetMoviesList = React.useCallback<VoidFunction>(
     () => dispatch(resetMoviesModelState()),
     [dispatch]
   );

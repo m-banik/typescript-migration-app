@@ -1,10 +1,15 @@
 import * as moviesActionTypes from './types';
-import { MovieType, EditedMovieType, IdType } from '@Common/index';
+import {
+  MovieDataType,
+  EditedMovieType,
+  IdType,
+  MovieType
+} from '@Common/index';
 
-export const addMovieStart = (newMovie: MovieType) =>
+export const addMovieStart = (newMovieData: MovieDataType) =>
   ({
     type: moviesActionTypes.ADD_MOVIE_START,
-    newMovie
+    newMovieData
   } as const);
 
 export const editMovieStart = (editedMovieProperties: EditedMovieType) =>
