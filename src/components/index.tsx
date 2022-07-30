@@ -2,6 +2,7 @@ export * from './App';
 export * from './button';
 export * from './editable-movie';
 export * from './element-index';
+export * from './error-messages';
 export * from './movie';
 export * from './movie-button-panel';
 export * from './movies-list';

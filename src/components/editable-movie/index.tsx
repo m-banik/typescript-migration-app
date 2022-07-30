@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { MovieDataType, MovieDataHandlerType } from '@Common/index';
 import { assertIsOfFormMovieDataType } from '@Utilities/index';
-import { ElementIndex, Button } from '@Components/index';
+import { ElementIndex, Button, ErrorMessages } from '@Components/index';
 import classes from './styles.module.less';
 
 type EditableMoviePropsType = {
@@ -77,23 +77,12 @@ export const EditableMovie: React.FC<EditableMoviePropsType> = ({
         />
         <Button description={'Accept'} className={classes.submitButton} />
       </form>
-      <div className={classes.errorMessages}>
-        {errors.title && (
-          <span className={classes.errorMessage}>
-            Movie title is required.{' '}
-          </span>
-        )}
-        {errors.premiereDate && (
-          <span className={classes.errorMessage}>
-            Premiere date must count four digits.{' '}
-          </span>
-        )}
-        {errors.director && (
-          <span className={classes.errorMessage}>
-            Movie director is required.
-          </span>
-        )}
-      </div>
+      <ErrorMessages
+        className={classes.errorMessages}
+        isTitleError={!!errors.title}
+        isPremiereError={!!errors.premiereDate}
+        isDirectorError={!!errors.director}
+      />
     </div>
   );
 };
