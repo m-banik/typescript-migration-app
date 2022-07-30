@@ -1,10 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
-import { ElementIndex, Button } from '..';
+import { MovieDataType, MovieDataHandlerType } from '@Common/index';
+import { assertIsOfFormMovieDataType } from '@Utilities/index';
+import { ElementIndex, Button } from '@Components/index';
 import classes from './styles.module.less';
 
-export const EditableMovie = ({
+type EditableMoviePropsType = {
+  elementIndex?: number;
+  title?: string;
+  premiereDate?: number;
+  director?: string;
+  onEditMovie: MovieDataHandlerType;
+};
+
+export const EditableMovie: React.FC<EditableMoviePropsType> = ({
   elementIndex,
   title,
   premiereDate,
@@ -16,11 +25,19 @@ export const EditableMovie = ({
     handleSubmit,
     reset,
     formState: { errors }
-  } = useForm();
+  } = useForm<MovieDataType>();
 
   const onSubmit = React.useMemo(() => {
-    const handleFormData = (data, event) => {
-      onEditMovie(data);
+    const handleFormData = (data: unknown) => {
+      assertIsOfFormMovieDataType(data);
+
+      const premiereDateAsNumber = Number(data.premiereDate);
+      if (isNaN(premiereDateAsNumber)) {
+        return;
+      }
+
+      const movieData = { ...data, premiereDate: premiereDateAsNumber };
+      onEditMovie(movieData);
       reset();
     };
 
@@ -79,12 +96,4 @@ export const EditableMovie = ({
       </div>
     </div>
   );
-};
-
-EditableMovie.propTypes = {
-  elementIndex: PropTypes.number,
-  title: PropTypes.string,
-  premiereDate: PropTypes.number,
-  director: PropTypes.string,
-  onEditMovie: PropTypes.func.isRequired
 };

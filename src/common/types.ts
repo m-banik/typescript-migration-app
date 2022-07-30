@@ -12,6 +12,14 @@ export type MovieType = {
 
 export type EditedMovieType = Pick<MovieType, 'id'> & Partial<MovieType>;
 
+export type MovieDataType = Omit<MovieType, 'id'>;
+
+export type MovieDataHandlerType = (movieData: MovieDataType) => void;
+
+export type FormMovieDataType = Omit<MovieDataType, 'premiereDate'> & {
+  premiereDate: string;
+};
+
 export type MoviesModelStateType = {
   movies: MovieType[];
 };

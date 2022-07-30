@@ -15,7 +15,8 @@
       "@Common/*": ["./common/*"],
       "@Components/*": ["./components/*"],
       "@Models/*": ["./models/*"],
-      "@MoviesModel/*": ["./models/movies/*"]
+      "@MoviesModel/*": ["./models/movies/*"],
+      "@Utilities/*": ["./utilities/*"]
     }
   }
 }
