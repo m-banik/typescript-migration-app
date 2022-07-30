@@ -1,31 +1,50 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { EditableMovie, Movie, MovieButtonPanel } from '..';
+import {
+  IdType,
+  StoreType,
+  DispatchType,
+  MovieDataHandlerType
+} from '@Common/index';
 import {
   selectMovieById,
   editMovieStart,
   deleteMovieStart
-} from '../../models';
+} from '@Models/index';
+import { EditableMovie, Movie, MovieButtonPanel } from '@Components/index';
 import classes from './styles.module.less';
 
-export const MoviesListElement = ({ movieId, elementIndex }) => {
-  const movie = useSelector((store) => selectMovieById(movieId)(store));
-  const dispatch = useDispatch();
+type MoviesListElementPropsType = {
+  movieId: IdType;
+  elementIndex?: number;
+};
+
+type CustomDispatchType = DispatchType<
+  ReturnType<typeof editMovieStart | typeof deleteMovieStart>
+>;
+
+export const MoviesListElement: React.FC<MoviesListElementPropsType> = ({
+  movieId,
+  elementIndex
+}) => {
+  const movie = useSelector((store: StoreType) =>
+    selectMovieById(movieId)(store)
+  );
+  const dispatch = useDispatch<CustomDispatchType>();
 
   const [isMovieEdited, setIsMovieEdited] = React.useState(false);
 
-  const handleSetMovieEditionMode = React.useCallback(
+  const handleSetMovieEditionMode = React.useCallback<VoidFunction>(
     () => setIsMovieEdited(true),
     [setIsMovieEdited]
   );
 
-  const handleUnsetMovieEditionMode = React.useCallback(
+  const handleUnsetMovieEditionMode = React.useCallback<VoidFunction>(
     () => setIsMovieEdited(false),
     [setIsMovieEdited]
   );
 
-  const handleEditMovie = React.useCallback(
+  const handleEditMovie = React.useCallback<MovieDataHandlerType>(
     (editedMovieData) => {
       const editedMovieProperties = { id: movieId, ...editedMovieData };
       dispatch(editMovieStart(editedMovieProperties));
@@ -34,7 +53,7 @@ export const MoviesListElement = ({ movieId, elementIndex }) => {
     [movieId, dispatch, handleUnsetMovieEditionMode]
   );
 
-  const handleDeleteMovie = React.useCallback(
+  const handleDeleteMovie = React.useCallback<VoidFunction>(
     () => dispatch(deleteMovieStart(movieId)),
     [movieId, dispatch]
   );
@@ -65,9 +84,4 @@ export const MoviesListElement = ({ movieId, elementIndex }) => {
       />
     </li>
   );
-};
-
-MoviesListElement.propTypes = {
-  movieId: PropTypes.string.isRequired,
-  elementIndex: PropTypes.number
 };
