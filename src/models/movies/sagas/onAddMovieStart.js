@@ -1,7 +1,7 @@
 import { select, put, takeLatest } from 'redux-saga/effects';
-import { selectMoviesList, storeMovies, ADD_MOVIE_START } from '..';
 import { nanoid } from 'nanoid';
 import { produce } from 'immer';
+import { selectMoviesList, storeMovies, ADD_MOVIE_START } from '..';
 
 export function* onAddMovie({ newMovie }) {
   const completedNewMovie = { ...newMovie, id: nanoid() };

@@ -1,6 +1,6 @@
-import { all, call } from 'typed-redux-saga';
+import { all, call } from 'redux-saga/effects';
 import { moviesModelRootSaga } from './movies';
 
 export function* rootSaga() {
-  yield* all([call(moviesModelRootSaga)]);
+  yield all([call(moviesModelRootSaga)]);
 }

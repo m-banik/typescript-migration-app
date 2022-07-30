@@ -1,6 +1,6 @@
+import { produce } from 'immer';
 import * as moviesActionTypes from './types';
 import { moviesSamplesList } from '../../common';
-import { produce } from 'immer';
 
 const clearMoviesModelState = {
   movies: []

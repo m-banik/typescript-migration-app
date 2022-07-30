@@ -1,6 +1,6 @@
 import { select, put, takeLatest } from 'redux-saga/effects';
-import { selectMoviesList, storeMovies, EDIT_MOVIE_START } from '..';
 import { produce } from 'immer';
+import { selectMoviesList, storeMovies, EDIT_MOVIE_START } from '..';
 
 export function* onEditMovie({ editedMovieProperties }) {
   const newMoviesList = produce(yield select(selectMoviesList), (draft) =>
