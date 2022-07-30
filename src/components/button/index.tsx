@@ -1,9 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import CN from 'classnames';
 import classes from './styles.module.less';
 
-export const Button = ({
+type ButtonPropsType = {
+  description: string;
+  className?: string;
+  variant?: 'danger' | 'warning';
+  isDisabled?: boolean;
+  onClick: VoidFunction;
+};
+
+export const Button: React.FC<ButtonPropsType> = ({
   description,
   className,
   variant,
@@ -20,12 +27,4 @@ export const Button = ({
       {description}
     </button>
   );
-};
-
-Button.propTypes = {
-  description: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  variant: PropTypes.oneOf(['danger', 'warning']),
-  isDisabled: PropTypes.bool,
-  onClick: PropTypes.func
 };
