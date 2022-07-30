@@ -7,7 +7,7 @@ type ButtonPropsType = {
   className?: string;
   variant?: 'danger' | 'warning';
   isDisabled?: boolean;
-  onClick: VoidFunction;
+  onClick?: VoidFunction;
 };
 
 export const Button: React.FC<ButtonPropsType> = ({
