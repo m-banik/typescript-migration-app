@@ -1,11 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { MoviesListControlPanel, MoviesListElement } from '..';
-import { selectMoviesIds } from '../../models';
+import { selectMoviesIds } from '@MoviesModel/index';
+import { StoreType } from '@Common/index';
+import { MoviesListControlPanel, MoviesListElement } from '@Components/index';
 import classes from './styles.module.less';
 
 export const MoviesList = () => {
-  const moviesIds = useSelector((store) => selectMoviesIds(store));
+  const moviesIds = useSelector((store: StoreType) => selectMoviesIds(store));
 
   return (
     <div className={classes.moviesList}>

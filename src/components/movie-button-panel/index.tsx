@@ -1,9 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Button } from '..';
+import { Button } from '@Components/index';
 import classes from './styles.module.less';
 
-export const MovieButtonPanel = ({
+type MovieButtonPanelPropsType = {
+  isMovieEdited: boolean;
+  onUnsetMovieEditionMode: VoidFunction;
+  onSetMovieEditionMode: VoidFunction;
+  onDeleteMovie: VoidFunction;
+};
+
+export const MovieButtonPanel: React.FC<MovieButtonPanelPropsType> = ({
   isMovieEdited,
   onUnsetMovieEditionMode,
   onSetMovieEditionMode,
@@ -22,10 +28,3 @@ export const MovieButtonPanel = ({
     <Button description={'Delete'} variant={'danger'} onClick={onDeleteMovie} />
   </div>
 );
-
-MovieButtonPanel.propTypes = {
-  isMovieEdited: PropTypes.bool.isRequired,
-  onUnsetMovieEditionMode: PropTypes.func.isRequired,
-  onSetMovieEditionMode: PropTypes.func.isRequired,
-  onDeleteMovie: PropTypes.func.isRequired
-};
