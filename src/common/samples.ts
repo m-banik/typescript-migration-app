@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid';
+import { MovieType } from '.';
 
-export const moviesSamplesList = [
+export const moviesSamplesList: MovieType[] = [
   {
     id: nanoid(),
     title: 'Koneser',
