@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
-import { ElementIndex, Button } from '..';
+import { ElementIndex, Button, ErrorMessages } from '..';
 import classes from './styles.module.less';
 
 export const EditableMovie = ({
@@ -60,23 +60,12 @@ export const EditableMovie = ({
         />
         <Button description={'Accept'} className={classes.submitButton} />
       </form>
-      <div className={classes.errorMessages}>
-        {errors.title && (
-          <span className={classes.errorMessage}>
-            Movie title is required.{' '}
-          </span>
-        )}
-        {errors.premiereDate && (
-          <span className={classes.errorMessage}>
-            Premiere date must count four digits.{' '}
-          </span>
-        )}
-        {errors.director && (
-          <span className={classes.errorMessage}>
-            Movie director is required.
-          </span>
-        )}
-      </div>
+      <ErrorMessages
+        className={classes.errorMessages}
+        isTitleError={!!errors.title}
+        isPremiereError={!!errors.premiereDate}
+        isDirectorError={!!errors.director}
+      />
     </div>
   );
 };
