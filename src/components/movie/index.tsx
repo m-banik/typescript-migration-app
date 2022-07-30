@@ -1,9 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { ElementIndex } from '..';
+import { ElementIndex } from '@Components/index';
 import classes from './styles.module.less';
 
-export const Movie = ({ elementIndex, title, premiereDate, director }) => (
+type MoviePropsType = {
+  elementIndex?: number;
+  title: string;
+  premiereDate: number;
+  director: string;
+};
+
+export const Movie: React.FC<MoviePropsType> = ({
+  elementIndex,
+  title,
+  premiereDate,
+  director
+}) => (
   <div className={classes.movie}>
     {elementIndex === undefined ? null : <ElementIndex index={elementIndex} />}
     <span className={classes.title}>{title}</span>
@@ -11,10 +22,3 @@ export const Movie = ({ elementIndex, title, premiereDate, director }) => (
     <span>{director}</span>
   </div>
 );
-
-Movie.propTypes = {
-  elementIndex: PropTypes.number,
-  title: PropTypes.string.isRequired,
-  premiereDate: PropTypes.number.isRequired,
-  director: PropTypes.string.isRequired
-};
