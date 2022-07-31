@@ -20,7 +20,7 @@ type CustomDispatchType = DispatchType<
   >
 >;
 
-export const MoviesListControlPanel = () => {
+export const MoviesListControlPanel: React.FC = () => {
   const dispatch = useDispatch<CustomDispatchType>();
 
   const handleAddMovie = React.useCallback<MovieDataHandlerType>(

@@ -5,7 +5,7 @@ import { StoreType } from '@Common/index';
 import { MoviesListControlPanel, MoviesListElement } from '@Components/index';
 import classes from './styles.module.less';
 
-export const MoviesList = () => {
+export const MoviesList: React.FC = () => {
   const moviesIds = useSelector((store: StoreType) => selectMoviesIds(store));
 
   return (
