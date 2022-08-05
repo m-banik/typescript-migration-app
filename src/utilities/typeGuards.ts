@@ -6,10 +6,11 @@ export const checkIfIsOfMovieDataType = (
   const instance = input as MovieDataType;
 
   return (
-    instance instanceof Object &&
+    typeof instance === 'object' &&
+    !(instance instanceof Array) &&
     typeof instance.title === 'string' &&
     typeof instance.premiereDate === 'number' &&
-    typeof instance.title === 'string'
+    typeof instance.director === 'string'
   );
 };
 
@@ -28,22 +29,18 @@ export function assertIsOfMovieDataType(
   input: unknown,
   errorMessage = 'Input is of incorrect type!'
 ): asserts input is MovieDataType {
-  if (checkIfIsOfMovieDataType(input)) {
-    return;
+  if (!checkIfIsOfMovieDataType(input)) {
+    throw new Error(errorMessage);
   }
-
-  throw new Error(errorMessage);
 }
 
 export function assertAreOfMovieDataType(
   input: unknown,
   errorMessage = 'Input is of incorrect type!'
 ): asserts input is MovieDataType[] {
-  if (checkIfAreOfMovieDataType(input)) {
-    return;
+  if (!checkIfAreOfMovieDataType(input)) {
+    throw new Error(errorMessage);
   }
-
-  throw new Error(errorMessage);
 }
 
 export const checkIfIsOfFormMovieDataType = (
@@ -52,10 +49,11 @@ export const checkIfIsOfFormMovieDataType = (
   const instance = input as FormMovieDataType;
 
   return (
-    instance instanceof Object &&
+    typeof instance === 'object' &&
+    !(instance instanceof Array) &&
     typeof instance.title === 'string' &&
     typeof instance.premiereDate === 'string' &&
-    typeof instance.title === 'string'
+    typeof instance.director === 'string'
   );
 };
 
@@ -74,20 +72,16 @@ export function assertIsOfFormMovieDataType(
   input: unknown,
   errorMessage = 'Input is of incorrect type!'
 ): asserts input is FormMovieDataType {
-  if (checkIfIsOfFormMovieDataType(input)) {
-    return;
+  if (!checkIfIsOfFormMovieDataType(input)) {
+    throw new Error(errorMessage);
   }
-
-  throw new Error(errorMessage);
 }
 
 export function assertAreOfFormMovieDataType(
   input: unknown,
   errorMessage = 'Input is of incorrect type!'
 ): asserts input is FormMovieDataType[] {
-  if (checkIfAreOfFormMovieDataType(input)) {
-    return;
+  if (!checkIfAreOfFormMovieDataType(input)) {
+    throw new Error(errorMessage);
   }
-
-  throw new Error(errorMessage);
 }
