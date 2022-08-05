@@ -1,15 +1,13 @@
 import { select, put, takeLatest } from 'typed-redux-saga';
 import { produce } from 'immer';
 import {
-  deleteMovieStart,
+  DeleteMovieActionType,
   selectMoviesList,
   storeMovies,
   DELETE_MOVIE_START
 } from '..';
 
-type ActionType = ReturnType<typeof deleteMovieStart>;
-
-export function* onDeleteMovie({ movieId }: ActionType) {
+export function* onDeleteMovie({ movieId }: DeleteMovieActionType) {
   const newMoviesList = produce(yield* select(selectMoviesList), (draft) =>
     draft.filter(({ id }) => id !== movieId)
   );

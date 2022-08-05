@@ -40,11 +40,21 @@ export const clearMoviesModelState = () =>
     type: moviesActionTypes.CLEAR_MOVIES_MODEL_STATE
   } as const);
 
-export type MoviesModelActionType = ReturnType<
-  | typeof addMovieStart
-  | typeof editMovieStart
-  | typeof deleteMovieStart
-  | typeof storeMovies
-  | typeof resetMoviesModelState
-  | typeof clearMoviesModelState
+export type AddMovieActionType = ReturnType<typeof addMovieStart>;
+export type EditMovieActionType = ReturnType<typeof editMovieStart>;
+export type DeleteMovieActionType = ReturnType<typeof deleteMovieStart>;
+export type StoreMoviesActionType = ReturnType<typeof storeMovies>;
+export type ResetMoviesModelStateActionType = ReturnType<
+  typeof resetMoviesModelState
 >;
+export type ClearMoviesModelStateActionType = ReturnType<
+  typeof clearMoviesModelState
+>;
+
+export type MoviesModelActionType =
+  | AddMovieActionType
+  | EditMovieActionType
+  | DeleteMovieActionType
+  | StoreMoviesActionType
+  | ResetMoviesModelStateActionType
+  | ClearMoviesModelStateActionType;

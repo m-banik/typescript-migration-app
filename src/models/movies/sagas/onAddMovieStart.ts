@@ -2,15 +2,13 @@ import { select, put, takeLatest } from 'typed-redux-saga';
 import { nanoid } from 'nanoid';
 import { produce } from 'immer';
 import {
-  addMovieStart,
+  AddMovieActionType,
   selectMoviesList,
   storeMovies,
   ADD_MOVIE_START
 } from '..';
 
-type ActionType = ReturnType<typeof addMovieStart>;
-
-export function* onAddMovie({ newMovieData }: ActionType) {
+export function* onAddMovie({ newMovieData }: AddMovieActionType) {
   const newMovie = { ...newMovieData, id: nanoid() };
 
   const newMoviesList = produce(yield* select(selectMoviesList), (draft) => [

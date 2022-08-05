@@ -1,15 +1,13 @@
 import { select, put, takeLatest } from 'typed-redux-saga';
 import { produce } from 'immer';
 import {
-  editMovieStart,
+  EditMovieActionType,
   selectMoviesList,
   storeMovies,
   EDIT_MOVIE_START
 } from '..';
 
-type ActionType = ReturnType<typeof editMovieStart>;
-
-export function* onEditMovie({ editedMovieProperties }: ActionType) {
+export function* onEditMovie({ editedMovieProperties }: EditMovieActionType) {
   const newMoviesList = produce(yield* select(selectMoviesList), (draft) =>
     draft.map((movie) =>
       movie.id === editedMovieProperties.id
