@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   IdType,
   StoreType,
-  DispatchType,
+  ThunkDispatchType,
   MovieDataHandlerType
 } from '@Common/index';
 import {
@@ -19,7 +19,7 @@ type MoviesListElementPropsType = {
   elementIndex?: number;
 };
 
-type CustomDispatchType = DispatchType<
+type CustomDispatchType = ThunkDispatchType<
   typeof editMovieStart | typeof deleteMovieStart
 >;
 

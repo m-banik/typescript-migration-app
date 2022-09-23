@@ -1,6 +1,10 @@
 import { nanoid } from 'nanoid';
-import { Dispatch } from 'redux';
-import { CommonActionCreatorType } from '../models/root.reducer';
+import { Action, Dispatch } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import {
+  CommonActionCreatorType,
+  CommonActionWithDispatchCreatorType
+} from '../models/root.reducer';
 
 export type { Reducer as ReducerType } from 'redux';
 
@@ -34,3 +38,13 @@ export type StoreType = {
 export type DispatchType<T extends CommonActionCreatorType> = Dispatch<
   ReturnType<T>
 >;
+
+export type ThunkDispatchType<T extends CommonActionWithDispatchCreatorType> =
+  ThunkDispatch<StoreType, {}, Action<T>>;
+
+export type ThunkActionCreatorType<
+  T extends CommonActionCreatorType,
+  K extends unknown[]
+> = (
+  ...args: K
+) => (dispatch: DispatchType<T>, getState: () => StoreType) => void;

@@ -1,6 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { DispatchType, MovieDataHandlerType } from '@Common/index';
+import {
+  ThunkDispatchType,
+  DispatchType,
+  MovieDataHandlerType
+} from '@Common/index';
 import {
   addMovieStart,
   clearMoviesModelState,
@@ -12,11 +16,9 @@ import {
 } from '@Components/index';
 import classes from './styles.module.less';
 
-type CustomDispatchType = DispatchType<
-  | typeof addMovieStart
-  | typeof clearMoviesModelState
-  | typeof resetMoviesModelState
->;
+type CustomDispatchType =
+  | ThunkDispatchType<typeof addMovieStart> &
+      DispatchType<typeof clearMoviesModelState | typeof resetMoviesModelState>;
 
 export const MoviesListControlPanel: React.FC = () => {
   const dispatch = useDispatch<CustomDispatchType>();
