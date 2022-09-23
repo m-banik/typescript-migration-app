@@ -20,7 +20,7 @@ type MoviesListElementPropsType = {
 };
 
 type CustomDispatchType = DispatchType<
-  ReturnType<typeof editMovieStart | typeof deleteMovieStart>
+  typeof editMovieStart | typeof deleteMovieStart
 >;
 
 export const MoviesListElement: React.FC<MoviesListElementPropsType> = ({

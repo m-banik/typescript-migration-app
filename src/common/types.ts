@@ -1,5 +1,8 @@
 import { nanoid } from 'nanoid';
-export type { Reducer as ReducerType, Dispatch as DispatchType } from 'redux';
+import { Dispatch } from 'redux';
+import { CommonActionCreatorType } from '../models/root.reducer';
+
+export type { Reducer as ReducerType } from 'redux';
 
 export type IdType = ReturnType<typeof nanoid>;
 
@@ -27,3 +30,7 @@ export type MoviesModelStateType = {
 export type StoreType = {
   moviesModel: MoviesModelStateType;
 };
+
+export type DispatchType<T extends CommonActionCreatorType> = Dispatch<
+  ReturnType<T>
+>;

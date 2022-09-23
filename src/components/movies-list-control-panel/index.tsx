@@ -13,11 +13,9 @@ import {
 import classes from './styles.module.less';
 
 type CustomDispatchType = DispatchType<
-  ReturnType<
-    | typeof addMovieStart
-    | typeof clearMoviesModelState
-    | typeof resetMoviesModelState
-  >
+  | typeof addMovieStart
+  | typeof clearMoviesModelState
+  | typeof resetMoviesModelState
 >;
 
 export const MoviesListControlPanel: React.FC = () => {
