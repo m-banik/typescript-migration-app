@@ -54,14 +54,14 @@ export const EditableMovie: React.FC<EditableMoviePropsType> = ({
           defaultValue={title}
           type="text"
           placeholder="Title"
-          className={`w3-input w3-border w3-round-large ${classes.title}`}
+          className={`w3-input w3-small w3-border w3-round-large ${classes.title}`}
           {...register('title', { required: true })}
         />
         <input
           defaultValue={premiereDate}
           type="number"
-          placeholder="Premiere date"
-          className={`w3-input w3-border w3-round-large ${classes.premiere}`}
+          placeholder="Date"
+          className={`w3-input w3-small w3-border w3-round-large ${classes.premiere}`}
           {...register('premiereDate', {
             required: true,
             minLength: 4,
@@ -72,7 +72,7 @@ export const EditableMovie: React.FC<EditableMoviePropsType> = ({
           defaultValue={director}
           type="text"
           placeholder="Director"
-          className={`w3-input w3-border w3-round-large ${classes.director}`}
+          className={`w3-input w3-small w3-border w3-round-large ${classes.director}`}
           {...register('director', { required: true })}
         />
         <Button description={'Accept'} className={classes.submitButton} />
