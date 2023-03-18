@@ -31,6 +31,7 @@ export const MoviesList: React.FC = () => {
         ))}
       </ul>
       <p className={classes.footer}>
+        <i className={`${classes.icon} material-icons w3-large`}>camera</i>
         <span>
           See more on{' '}
           <a
@@ -42,7 +43,7 @@ export const MoviesList: React.FC = () => {
             Filmweb
           </a>
         </span>
-        <i className={`${classes.icon} material-icons`}>movie</i>
+        <i className={`${classes.icon} material-icons w3-large`}>movie</i>
       </p>
     </div>
   );
