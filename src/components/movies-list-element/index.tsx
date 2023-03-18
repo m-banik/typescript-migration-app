@@ -61,6 +61,10 @@ export const MoviesListElement: React.FC<MoviesListElementPropsType> = ({
 
   const classNames = CN(classes.moviesListElement, 'w3-round-large');
 
+  const buttonPanelClasses = CN(classes.buttonPanel, {
+    [classes.editedMovie]: isMovieEdited
+  });
+
   return (
     <li className={classNames}>
       {isMovieEdited ? (
@@ -80,6 +84,7 @@ export const MoviesListElement: React.FC<MoviesListElementPropsType> = ({
         />
       )}
       <MovieButtonPanel
+        className={buttonPanelClasses}
         isMovieEdited={isMovieEdited}
         onUnsetMovieEditionMode={handleUnsetMovieEditionMode}
         onSetMovieEditionMode={handleSetMovieEditionMode}

@@ -1,11 +1,74 @@
 .moviesListElement {
   display: flex;
-  width: 51%;
+  align-items: center;
+  width: 100%;
   margin: 5px auto;
   padding: 8px;
   transition: 0.2s;
 
   &:hover {
     background-color: #ffffcc;
+  }
+
+  .buttonPanel {
+    gap: 5px;
+    padding-left: 5px;
+
+    &.editedMovie {
+      margin-left: 0;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+
+    .buttonPanel {
+      margin: 5px auto;
+
+      &.editedMovie {
+        margin-left: auto;
+        padding-left: 0;
+      }
+    }
+  }
+
+  @media screen and (min-width: 864px) {
+    width: 97.5%;
+  }
+
+  @media screen and (min-width: 1124px) and (min-height: 920px) {
+    width: 90%;
+  }
+
+  @media screen and (min-width: 1280px) and (min-height: 920px) {
+    width: 80%;
+  }
+
+  @media screen and (min-width: 1366px) and (min-height: 920px) {
+    width: 75%;
+  }
+
+  @media screen and (min-width: 1440px) and (min-height: 920px) {
+    width: 70%;
+  }
+
+  @media screen and (min-width: 1536px) and (min-height: 920px) {
+    width: 65%;
+  }
+
+  @media screen and (min-width: 1600px) and (min-height: 920px) {
+    width: 62.5%;
+  }
+
+  @media screen and (min-width: 1700px) and (min-height: 920px) {
+    width: 60%;
+  }
+
+  @media screen and (min-width: 1740px) and (min-height: 920px) {
+    width: 57.5%;
+  }
+
+  @media screen and (min-width: 1920px) and (min-height: 920px) {
+    width: 52%;
   }
 }
