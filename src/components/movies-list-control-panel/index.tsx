@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import CN from 'classnames';
 import { DispatchType, MovieDataHandlerType } from '@Common/index';
 import {
   addMovieStart,
@@ -38,8 +39,10 @@ export const MoviesListControlPanel: React.FC = () => {
     [dispatch]
   );
 
+  const classNames = CN(classes.moviesListControlPanel, 'w3-pale-yellow');
+
   return (
-    <div className={classes.moviesListControlPanel}>
+    <div className={classNames}>
       <EditableMovie onEditMovie={handleAddMovie} />
       <MoviesListControlButtonsPanel
         onClearList={handleClearMoviesList}

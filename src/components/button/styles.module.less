@@ -1,43 +1,7 @@
 .button {
-  width: 65px;
-  padding: 5px;
-  border: none;
-  border-radius: 5px;
-  font-size: 12px;
-  color: #fff;
-  background-color: lighten(mediumaquamarine, 5%);
-  outline: none;
   transition: 0.2s;
-  cursor: pointer;
 
   &:hover {
-    color: #eee;
-    background-color: lighten(mediumaquamarine, 2.5%);
-  }
-
-  &.danger {
-    background-color: orangered;
-
-    &:hover {
-      background-color: darken(orangered, 5%);
-    }
-  }
-
-  &.warning {
-    color: #333;
-    background-color: lighten(gold, 10%);
-
-    &:hover {
-      color: #000;
-      background-color: lighten(gold, 2.5%);
-    }
-  }
-
-  &:disabled,
-  &.warning:disabled,
-  &.danger:disabled {
-    color: #ddd;
-    background-color: lighten(gray, 5%);
-    cursor: default;
+    opacity: 0.9;
   }
 }

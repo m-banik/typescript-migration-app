@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import CN from 'classnames';
 import {
   IdType,
   StoreType,
@@ -58,8 +59,10 @@ export const MoviesListElement: React.FC<MoviesListElementPropsType> = ({
     [movieId, dispatch]
   );
 
+  const classNames = CN(classes.moviesListElement, 'w3-round-large');
+
   return (
-    <li className={classes.moviesListElement}>
+    <li className={classNames}>
       {isMovieEdited ? (
         <EditableMovie
           elementIndex={elementIndex}

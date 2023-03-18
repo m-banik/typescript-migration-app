@@ -17,8 +17,12 @@ export const Button: React.FC<ButtonPropsType> = ({
   isDisabled,
   onClick
 }) => {
-  const classNames = CN(classes.button, {
-    [classes[variant]]: !!variant,
+  const classNames = CN('w3-btn w3-round-large w3-small', {
+    'w3-blue': !variant,
+    'w3-amber': variant === 'warning',
+    'w3-red': variant === 'danger',
+    'w3-disabled': isDisabled,
+    [classes.button]: !isDisabled,
     [className]: !!className
   });
 

@@ -2,9 +2,6 @@
   text-align: center;
 
   .header {
-    margin: 10px;
-    color: #fff;
-    font-style: italic;
     letter-spacing: 1px;
   }
 
@@ -13,8 +10,32 @@
     width: 95%;
     margin: 0 auto;
     border-radius: 8px;
-    background-color: #fff;
     list-style-type: none;
     overflow: hidden;
+
+    &.disabled {
+      display: none;
+    }
+  }
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .link {
+      border-bottom: 1px solid #fff;
+      text-decoration: none;
+      transition: 0.2s;
+
+      &:hover {
+        border-color: #ddd;
+        color: #ddd;
+      }
+    }
+
+    .icon {
+      margin-left: 5px;
+    }
   }
 }
